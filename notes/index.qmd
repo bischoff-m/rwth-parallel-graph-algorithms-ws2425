@@ -1,0 +1,38 @@
+---
+title: "Parallel Graph Algorithms"
+---
+
+# Basics
+
+## Jacobian Matrix
+
+[[From Wikipedia](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant)]
+
+In vector calculus, the Jacobian matrix of a vector-valued function of several
+variables is the matrix of all its first-order partial derivatives. When this
+matrix is square, that is, when the function takes the same number of variables
+as input as the number of vector components of its output, its determinant is
+referred to as the Jacobian determinant.
+
+Suppose $f : \mathbb{R}^n \to \mathbb{R}^m$ is a function such that each of its
+first-order partial derivatives exists on $\mathbb{R}^n$. This function takes a
+point $x \in \mathbb{R}^n$ as input and produces the vector
+$f(x) \in \mathbb{R}^m$ as output. Then the Jacobian matrix of $f$, denoted
+$\textbf{J}_f \in \mathbb{R}^{m \times n}$ is
+
+$$
+\textbf{J}_f = \begin{bmatrix}
+\frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n}
+\end{bmatrix}
+$$
+
+## Hessian Matrix
+
+[[From Wikipedia](https://en.wikipedia.org/wiki/Hessian_matrix)]
+
+In mathematics, the Hessian matrix, Hessian or (less commonly) Hesse matrix is a
+square matrix of second-order partial derivatives of a scalar-valued function,
+or scalar field. It describes the local curvature of a function of many
+variables.
