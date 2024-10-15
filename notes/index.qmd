@@ -1,8 +1,18 @@
 ---
 title: "Parallel Graph Algorithms"
+format:
+    pdf:
+        toc: true
+        number-sections: true
+        colorlinks: true
 ---
 
-# Basics
+# Definitions
+
+## Sequential Graph Coloring
+
+Algorithm, the step by step all the nodes and all of them
+Colored. We can only change the order.
 
 ## Jacobian Matrix
 
@@ -36,3 +46,44 @@ In mathematics, the Hessian matrix, Hessian or (less commonly) Hesse matrix is a
 square matrix of second-order partial derivatives of a scalar-valued function,
 or scalar field. It describes the local curvature of a function of many
 variables.
+
+
+## Parallelization Frameworks
+
+### OpenMP
+
+[[From Wikipedia](https://en.wikipedia.org/wiki/OpenMP)]
+
+[[Documentation](https://enccs.github.io/openmp-gpu/)]
+
+### CUDA
+
+[[From Wikipedia](https://en.wikipedia.org/wiki/CUDA)]
+
+### Kokkos
+
+[[From Wikipedia](https://en.wikipedia.org/wiki/Kokkos)]
+
+## Idea for Algorithm
+
+### Variables
+
+\begin{tabular}{ll}
+    $G \in \mathbb{R}^{n\times n}$ & Adjacency matrix of the graph with $n$ vertices \\
+    $v_{next} \in \mathbb{N}$ & Next vertex to be colored \\
+    $v_{color} \in \mathbb{N}$ & Color of the vertex \\
+    $R \in \mathbb{R}^n$ & Rank of each vertex of $G$ \\
+\end{tabular}
+
+### Algorithm
+
+- Initialize $R$ with the rank of each vertex
+- Initialize $v_{next}$ with the vertex with the highest rank
+- For $i = 0$ to $n-1$:
+  - Set the $i$-th row and $i$-th column of $G$ to zero
+  - Calculate the rank of each vertex of $G$
+    - Parallelize this step
+    - Rows are batched based on their previous rank
+    - When parallel processes are done, they update $R$ and $v_{next}$
+  - Update $v_{next}$ to the next vertex to be colored
+
